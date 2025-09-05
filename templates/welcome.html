@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Welcome — Note Manager</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f1724;
+            color: #e6eef8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 500px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #94a3b8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: #7c5cff;
+            color: #031023;
+        }
+
+        .btn-outline {
+            border: 1px solid #94a3b8;
+            color: #94a3b8;
+        }
+
+        .btn-primary:hover {
+            background: #6b4de3;
+        }
+
+        .btn-outline:hover {
+            background: #94a3b8;
+            color: #031023;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Note Manager</h1>
+        <p>Create, organize, and search your notes quickly.</p>
+        <a href="{{ url_for('userregister') }}" class="btn btn-primary">Register</a>
+        <a href="{{ url_for('userlogin') }}" class="btn btn-outline">Login</a>
+
+    </div>
+</body>
+
+</html>

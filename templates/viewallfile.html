@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Files</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/833/833524.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #d0f0fd, #a0e7ff);
+      color: #00334e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      max-width: 900px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0077a6;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #b3e5fc;
+    }
+
+    th {
+      background-color: #e0f7fa;
+      color: #004d61;
+    }
+
+    tr:hover {
+      background-color: #f1fcff;
+    }
+
+    .action-links a {
+      margin-right: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #0077a6;
+      transition: color 0.2s ease;
+    }
+
+    .action-links a:hover {
+      color: #009ec3;
+    }
+
+    /* Add File Button Styling */
+    .add-file-link {
+      display: inline-block;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .add-file-link button {
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background-color: #0077a6;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .add-file-link button:hover {
+      background-color: #009ec3;
+      color: #d0f0fd;
+    }
+
+    .add-file-link button:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>All Files</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>File ID</th>
+          <th>Filename</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if all_filesdata %}
+        {% for file in all_filesdata %}
+        <tr>
+          <td>{{ file[0] }}</td>
+          <td>{{ file[1] }}</td>
+          <td class="action-links">
+            <a href="{{ url_for('viewfile', fid=file[0]) }}">View</a>
+            <a href="{{ url_for('downloadfile', fid=file[0]) }}">Download</a>
+            <a href="{{ url_for('deletefile', fid=file[0]) }}">Delete</a>
+      
+          </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+          <td colspan="3">No files found.</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+
+    <!-- Add New File Button -->
+    <div class="add-file-link">
+      <a href="{{ url_for('uploadfiles') }}"><button>Upload New File</button></a>
+    </div>
+  </div>
+</body>
+</html>

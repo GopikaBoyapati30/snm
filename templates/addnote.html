@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Add Note</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/3209/3209265.png" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff4b3, #ffcc70);
+            color: #3b2f14;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #b86b00;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ffb300;
+            border-radius: 12px;
+            outline: none;
+            font-size: 1rem;
+            transition: 0.3s;
+            background: #fffdf5;
+            color: #3b2f14;
+        }
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #ff9000;
+            box-shadow: 0 0 6px rgba(255, 163, 26, 0.5);
+        }
+        textarea {
+            resize: none;
+            min-height: 120px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ffb300, #ff9000);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(255, 163, 26, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(255, 163, 26, 0.6);
+        }
+        .btn-outline {
+            border: 2px solid #b86b00;
+            color: #b86b00;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #b86b00;
+            color: #fff4b3;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New Note</h1>
+        <form method="POST">
+            <input type="text" name="title" placeholder="Note Title" required>
+            <textarea name="content" placeholder="Write your note here..." required></textarea>
+            <button type="submit" class="btn btn-primary">Save Note</button>
+        </form>
+        <a href="#" class="btn btn-outline">Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Notes</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/3209/3209265.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff4b3, #ffcc70);
+      color: #3b2f14;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      max-width: 900px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #b86b00;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #ffcc70;
+    }
+
+    th {
+      background-color: #ffdb8b;
+      color: #3b2f14;
+    }
+
+    tr:hover {
+      background-color: #fff6d1;
+    }
+
+    .action-links a {
+      margin-right: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #b86b00;
+      transition: color 0.2s ease;
+    }
+
+    .action-links a:hover {
+      color: #ff9000;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      border: 2px solid #b86b00;
+      color: #b86b00;
+      background: transparent;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #b86b00;
+      color: #fff4b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>All Notes</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>NID</th>
+          <th>Title</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample Notes -->
+         {% if allnotesdata %}
+         {% for i in allnotesdata %}
+        <tr>
+          <td>{{i[0]}}</td>
+          <td>{{i[1]}}</td>
+          <td class="action-links">
+            <a href="{{url_for('viewnotes',nid=i[0])}}">View</a>
+            <a href="{{url_for('updatenotes',nid=i[0])}}">Update</a>
+            <a href="{{url_for('deletenotes',nid=i[0])}}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        <!-- More rows can be added dynamically -->
+      </tbody>
+    </table>
+    <a href="add.html" class="btn">Add New Note</a>
+  </div>
+</body>
+</html>
